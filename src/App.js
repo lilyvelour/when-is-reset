@@ -6,7 +6,9 @@ function getDailyReset() {
   const now = new Date();
   const reset = new Date();
 
-  reset.setUTCDate(now.getUTCSeconds() > 0 ? now.getUTCDate() + 1 : now.getUTCDate());
+  const isReset = now.getUTCHours() === 0 && now.getUTCMinutes() === 0 && now.getUTCSeconds() === 0;
+
+  reset.setUTCDate(isReset ? now.getUTCDate() : now.getUTCDate() + 1);
   reset.setUTCHours(0);
   reset.setUTCMinutes(0);
   reset.setUTCSeconds(0);
@@ -22,7 +24,7 @@ function getWeeklyReset() {
   const nextMonday = now.getUTCDate() + (((1 + 7 - now.getUTCDay()) % 7) || 7)
   const isReset = now.getUTCDate() === 1 && now.getUTCHours() === 7 && now.getUTCMinutes() === 30 && now.getUTCSeconds() === 0;
 
-  reset.setUTCDate(isReset ? now.getDate() : nextMonday);
+  reset.setUTCDate(isReset ? now.getUTCDate() : nextMonday);
   reset.setUTCHours(7);
   reset.setUTCMinutes(30);
   reset.setUTCSeconds(0);
