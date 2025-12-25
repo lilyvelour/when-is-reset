@@ -54,6 +54,9 @@ function App() {
           It is currently {reset.now.toLocaleString({ weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: '2-digit'})}
         </h5>
       </header>
+      <footer className="App-footer">
+        <span>Made by <a className="App-link" href="https://bsky.app/profile/lily.velour.social" target="_blank" rel="noreferrer">Lily Velour</a></span>
+      </footer>
     </div>
   );
 }
