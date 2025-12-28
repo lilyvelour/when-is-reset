@@ -8,7 +8,7 @@ body {
 }
 
 .App-header {
-  height: calc(100vh - 30px);
+  height: calc(100vh - 1.5em);
   align-content: center;
   overflow-y: auto;
   font-size: calc(10px + 2vmin);
@@ -50,8 +50,12 @@ h6 {
   bottom: 0;
   display: block;
   width: 100vw;
-  height: 30px;
+  height: 1.5em;
   background-color: #14161a;
   color: white;
   text-align: center;
+  border-top: 1px solid #080808;
+}
+.App-footer span {
+  line-height: 1.5em;
 }
