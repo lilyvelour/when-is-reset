@@ -140,6 +140,19 @@ function App() {
           </a>{" "}
           in Guild Wars 2?
         </h1>
+        <h4>
+          It is currently{" "}
+          <span className="App-highlight">
+            {reset.now.toLocaleString({
+              weekday: "short",
+              month: "short",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+              second: "2-digit",
+            })}
+          </span>
+        </h4>
         <h2>Daily</h2>
         {reset.daily.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)} (
         {reset.daily.toRelative()})<h2>Weekly</h2>
@@ -157,19 +170,6 @@ function App() {
         </h2>
         {reset.wvwEu.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)} (
         {reset.wvwEu.toRelative()})
-        <h5>
-          It is currently{" "}
-          <span className="App-highlight">
-            {reset.now.toLocaleString({
-              weekday: "short",
-              month: "short",
-              day: "numeric",
-              hour: "numeric",
-              minute: "numeric",
-              second: "2-digit",
-            })}
-          </span>
-        </h5>
         <div className="App-reference">
           <sup>*</sup> World vs. World reset times{" "}
           <a
