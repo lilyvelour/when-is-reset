@@ -162,7 +162,7 @@ function App() {
         <span>
           Made by{" "}
           <a
-            className="App-link"
+            className="App-highlight"
             href="https://bsky.app/profile/lily.velour.social"
             target="_blank"
             rel="noreferrer"
