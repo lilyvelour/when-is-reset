@@ -40,6 +40,26 @@ function getWeeklyReset() {
   return DateTime.fromISO(reset.toISOString());
 }
 
+function getMapBonusReset() {
+  const now = new Date();
+  const reset = new Date();
+
+  const nextThursday = now.getUTCDate() + ((4 + 7 - now.getUTCDay()) % 7 || 7);
+  const isReset =
+    now.getUTCDate() === 4 &&
+    now.getUTCHours() === 20 &&
+    now.getUTCMinutes() === 0 &&
+    now.getUTCSeconds() === 0;
+
+  reset.setUTCDate(isReset ? now.getUTCDate() : nextThursday);
+  reset.setUTCHours(20);
+  reset.setUTCMinutes(0);
+  reset.setUTCSeconds(0);
+  reset.setUTCMilliseconds(0);
+
+  return DateTime.fromISO(reset.toISOString());
+}
+
 function getWvWResetNa() {
   const now = new Date();
   const reset = new Date();
@@ -84,6 +104,7 @@ function App() {
   const [reset, setReset] = useState({
     daily: getDailyReset(),
     weekly: getWeeklyReset(),
+    mapBonus: getMapBonusReset(),
     wvwNa: getWvWResetNa(),
     wvwEu: getWvWResetEu(),
     now: DateTime.now(),
@@ -94,6 +115,7 @@ function App() {
       setReset({
         daily: getDailyReset(),
         weekly: getWeeklyReset(),
+        mapBonus: getMapBonusReset(),
         wvwNa: getWvWResetNa(),
         wvwEu: getWvWResetEu(),
         now: DateTime.now(),
@@ -122,12 +144,14 @@ function App() {
         {reset.daily.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)} (
         {reset.daily.toRelative()})<h2>Weekly</h2>
         {reset.weekly.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)} (
-        {reset.weekly.toRelative()})
+        {reset.weekly.toRelative()})<h2>Map Bonus</h2>
+        {reset.mapBonus.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)} (
+        {reset.mapBonus.toRelative()})
         <h2>
           WvW (NA)<sup>*</sup>
         </h2>
         {reset.wvwNa.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)} (
-        {reset.wvwNa.toRelative()})<br />
+        {reset.wvwNa.toRelative()})
         <h2>
           WvW (EU)<sup>*</sup>
         </h2>
@@ -147,7 +171,7 @@ function App() {
           </span>
         </h5>
         <div className="App-reference">
-          <sup>*</sup> World vs. World reset times and matchmaking{" "}
+          <sup>*</sup> World vs. World reset times{" "}
           <a
             className="App-highlight"
             href="https://wiki.guildwars2.com/wiki/World_versus_World#Weekly_WvW_reset"
