@@ -151,6 +151,8 @@ function App() {
           <a
             className="App-highlight"
             href="https://wiki.guildwars2.com/wiki/World_versus_World#Weekly_WvW_reset"
+            target="_blank"
+            rel="noreferrer"
           >
             {" "}
             are approximate
