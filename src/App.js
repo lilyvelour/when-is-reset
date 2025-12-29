@@ -25,13 +25,15 @@ function getWeeklyReset() {
   const reset = new Date();
 
   const nextMonday = now.getUTCDate() + ((1 + 7 - now.getUTCDay()) % 7 || 7);
-  const isReset =
-    now.getUTCDate() === 1 &&
-    now.getUTCHours() === 7 &&
-    now.getUTCMinutes() === 30 &&
-    now.getUTCSeconds() === 0;
+  const isResetDay =
+    now.getUTCDay() === 1 &&
+    (now.getUTCHours() <= 7 ||
+      (now.getUTCHours() === 7 && now.getUTCMinutes() <= 30) ||
+      (now.getUTCHours() === 7 &&
+        now.getUTCMinutes() === 30 &&
+        now.getUTCSeconds() === 0));
 
-  reset.setUTCDate(isReset ? now.getUTCDate() : nextMonday);
+  reset.setUTCDate(isResetDay ? now.getUTCDate() : nextMonday);
   reset.setUTCHours(7);
   reset.setUTCMinutes(30);
   reset.setUTCSeconds(0);
@@ -45,13 +47,14 @@ function getMapBonusReset() {
   const reset = new Date();
 
   const nextThursday = now.getUTCDate() + ((4 + 7 - now.getUTCDay()) % 7 || 7);
-  const isReset =
-    now.getUTCDate() === 4 &&
-    now.getUTCHours() === 20 &&
-    now.getUTCMinutes() === 0 &&
-    now.getUTCSeconds() === 0;
+  const isResetDay =
+    now.getUTCDay() === 4 &&
+    (now.getUTCHours() <= 20 ||
+      (now.getUTCHours() === 20 &&
+        now.getUTCMinutes() === 0 &&
+        now.getUTCSeconds() === 0));
 
-  reset.setUTCDate(isReset ? now.getUTCDate() : nextThursday);
+  reset.setUTCDate(isResetDay ? now.getUTCDate() : nextThursday);
   reset.setUTCHours(20);
   reset.setUTCMinutes(0);
   reset.setUTCSeconds(0);
@@ -65,13 +68,14 @@ function getWvWResetNa() {
   const reset = new Date();
 
   const nextSaturday = now.getUTCDate() + ((6 + 7 - now.getUTCDay()) % 7 || 7);
-  const isReset =
-    now.getUTCDate() === 6 &&
-    now.getUTCHours() === 2 &&
-    now.getUTCMinutes() === 0 &&
-    now.getUTCSeconds() === 0;
+  const isResetDay =
+    now.getUTCDay() === 6 &&
+    (now.getUTCHours() <= 2 ||
+      (now.getUTCHours() === 2 &&
+        now.getUTCMinutes() === 0 &&
+        now.getUTCSeconds() === 0));
 
-  reset.setUTCDate(isReset ? now.getUTCDate() : nextSaturday);
+  reset.setUTCDate(isResetDay ? now.getUTCDate() : nextSaturday);
   reset.setUTCHours(2);
   reset.setUTCMinutes(0);
   reset.setUTCSeconds(0);
@@ -85,13 +89,14 @@ function getWvWResetEu() {
   const reset = new Date();
 
   const nextFriday = now.getUTCDate() + ((5 + 7 - now.getUTCDay()) % 7 || 7);
-  const isReset =
-    now.getUTCDate() === 5 &&
-    now.getUTCHours() === 18 &&
-    now.getUTCMinutes() === 0 &&
-    now.getUTCSeconds() === 0;
+  const isResetDay =
+    now.getUTCDay() === 5 &&
+    (now.getUTCHours() <= 18 ||
+      (now.getUTCHours() === 18 &&
+        now.getUTCMinutes() === 0 &&
+        now.getUTCSeconds() === 0));
 
-  reset.setUTCDate(isReset ? now.getUTCDate() : nextFriday);
+  reset.setUTCDate(isResetDay ? now.getUTCDate() : nextFriday);
   reset.setUTCHours(18);
   reset.setUTCMinutes(0);
   reset.setUTCSeconds(0);
